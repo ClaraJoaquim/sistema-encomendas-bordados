@@ -4,6 +4,7 @@ import atividade.sistema_encomenda_bordados.cliente.dto.ClienteDTO;
 import atividade.sistema_encomenda_bordados.cliente.form.ClienteForm;
 import atividade.sistema_encomenda_bordados.cliente.model.Cliente;
 import atividade.sistema_encomenda_bordados.cliente.repository.ClienteRepository;
+import atividade.sistema_encomenda_bordados.execoes.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class ClienteService {
 
     public ResponseEntity<Cliente> buscarClienteporID(Long id) {
         Cliente cliente = (Cliente)this.clienteRepository.findById(id).orElseThrow(() -> {
-            return new RuntimeException("Cliente não encontrado");
+            return new ResourceNotFoundException("Cliente", id);
         });
         return ResponseEntity.status(HttpStatus.OK).body(cliente);
     }
