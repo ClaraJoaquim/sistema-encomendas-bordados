@@ -1,6 +1,7 @@
 package atividade.sistema_encomenda_bordados.pedido.model;
 
 import atividade.sistema_encomenda_bordados.cliente.model.Cliente;
+import atividade.sistema_encomenda_bordados.pedido.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,9 @@ public class Pedido {
 
     @Column(name = "valorTotal")
     private BigDecimal valorTotal;
+
+    @Enumerated(EnumType.STRING)
+    private StatusPedido statusPedido;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

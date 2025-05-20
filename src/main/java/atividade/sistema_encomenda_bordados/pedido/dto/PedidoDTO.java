@@ -1,5 +1,6 @@
 package atividade.sistema_encomenda_bordados.pedido.dto;
 
+import atividade.sistema_encomenda_bordados.pedido.enums.StatusPedido;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,8 @@ public class PedidoDTO {
     private LocalDateTime dataPedido;
 
     private BigDecimal valorTotal;
+
+    private StatusPedido statusPedido;
 }
+
+
